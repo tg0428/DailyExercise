@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="project">
+      <UniqueIdentifier>{373f3548-26b1-4fba-890b-4ad3b4cb270a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\trieTree">
+      <UniqueIdentifier>{6f8d7f2d-d91e-4f91-9a04-0f15df5577a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\dynamic_array">
+      <UniqueIdentifier>{7ac9ba3b-006e-45ef-9ea3-429e4e2f20d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\graphic">
+      <UniqueIdentifier>{e1975f27-8c65-41a1-bb23-c21630b6129a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\solution">
+      <UniqueIdentifier>{652f35b7-9c7f-4af0-b142-d1c78f1d84db}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\project\test.cpp">
+      <Filter>project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\trieTree\trie_tree.cpp">
+      <Filter>project\trieTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\dynamic_array\dynamic_array.cpp">
+      <Filter>project\dynamic_array</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\graphic\graphic.cpp">
+      <Filter>project\graphic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\project\trieTree\trie_tree.h">
+      <Filter>project\trieTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\dynamic_array\dynamic_array.h">
+      <Filter>project\dynamic_array</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\graphic\graphic.h">
+      <Filter>project\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\solution\solution.h">
+      <Filter>project\solution</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
