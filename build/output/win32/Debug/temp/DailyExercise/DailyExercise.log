@@ -1,3 +1,6 @@
 ﻿  test.cpp
+e:\github\dailyexercise\project\test.cpp(62): warning C4477: “printf”: 格式字符串“%ld”需要类型“long”的参数，但可变参数 2 拥有了类型“unsigned __int64”
+  e:\github\dailyexercise\project\test.cpp(62): note: 请考虑在格式字符串中使用“%lld”
+  e:\github\dailyexercise\project\test.cpp(62): note: 请考虑在格式字符串中使用“%I64d”
   DailyExercise.vcxproj -> E:\github\DailyExercise\build\output\win32\Debug\DailyExercise.exe
   DailyExercise.vcxproj -> E:\github\DailyExercise\build\output\win32\Debug\DailyExercise.pdb (Partial PDB)

@@ -23,12 +23,14 @@
     <ClCompile Include="..\..\project\graphic\graphic.cpp" />
     <ClCompile Include="..\..\project\test.cpp" />
     <ClCompile Include="..\..\project\trieTree\trie_tree.cpp" />
+    <ClCompile Include="..\..\project\util\utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\project\dynamic_array\dynamic_array.h" />
     <ClInclude Include="..\..\project\graphic\graphic.h" />
     <ClInclude Include="..\..\project\solution\solution.h" />
     <ClInclude Include="..\..\project\trieTree\trie_tree.h" />
+    <ClInclude Include="..\..\project\util\utility.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D3091E2D-8694-4623-B6A7-F45CB076ADEE}</ProjectGuid>
@@ -89,7 +91,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)/depends/pthread-win32/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(SolutionDir)/depends/pthread-win32/lib/win32/pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

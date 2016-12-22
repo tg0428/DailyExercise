@@ -16,6 +16,9 @@
     <Filter Include="project\solution">
       <UniqueIdentifier>{652f35b7-9c7f-4af0-b142-d1c78f1d84db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\util">
+      <UniqueIdentifier>{2ad52e60-5ad1-4bf1-8b16-7223ddff40de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\project\test.cpp">
@@ -30,6 +33,9 @@
     <ClCompile Include="..\..\project\graphic\graphic.cpp">
       <Filter>project\graphic</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\project\util\utility.cpp">
+      <Filter>project\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\project\trieTree\trie_tree.h">
@@ -43,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="..\..\project\solution\solution.h">
       <Filter>project\solution</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\util\utility.h">
+      <Filter>project\util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

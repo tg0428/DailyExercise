@@ -1,6 +1,7 @@
-#define SOLUTION
 #define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
-//#define TRIE_TREE
+#define HAVE_STRUCT_TIMESPEC
+//#define PTHREAD
+#define SOLUTION
 
 #ifdef TRIE_TREE
 #include "trieTree/trie_tree.h"
@@ -15,6 +16,11 @@
 #endif
 
 #include "stdio.h"
+#include "pthread.h"
+#include "process.h"
+#include "util/utility.h"
+
+using namespace tg;
 
 int main()
 {
@@ -42,10 +48,30 @@ int main()
 	//printf("%s: %s = %d\n", "ori str's length", "abba", s.length());
 	//printf("%s: %s = %d\n", "longest substring length", "abba", res);
 
-	std::string s_new = "aaabaaaa";
-	printf("%s: %s = %s\n", "longestPalindrome", "aaabaaaa", solution->longestPalindrome(s_new).c_str());
+	//std::string s_new = "aaabaaaa";
+	//printf("%s: %s = %s\n", "longestPalindrome", "aaabaaaa", solution->longestPalindrome(s_new).c_str());
+
+	//solution->generateParenthesis(3);
+	unsigned __int64 tick = utility::getTickCount();
+	int n = 1;
+	while (n-- > 0)
+	{
+		/////
+	}
+	unsigned __int64 tick_new = utility::getTickCount();
+	printf("%s=%ld", "duration", tick_new - tick);
 
 #endif // SOLUTION
+
+#ifdef PTHREAD
+	pid_t   pid;
+	pthread_t   tid;
+
+	pid = _getpid();
+	tid = pthread_self();
+
+	printf("pid %u tid %u (0x%x)\n", (unsigned int)pid, tid, tid);
+#endif // PTHREAD
 
 	getchar();
 	return 0;

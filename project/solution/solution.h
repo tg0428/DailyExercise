@@ -2,6 +2,8 @@
 #include <string>
 #include <map>
 #include <math.h>
+#include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -71,6 +73,41 @@ namespace tg
 			if (max_length == 0)
 				max_length = 1;
 			return s.substr(max_index -1, max_length);
+		}
+
+		typedef struct node
+		{
+			node(char value)
+			{
+				this->value = value;
+			}
+			char value;
+			node* nodes[2];
+		}tree_node;
+
+		vector<string> generateParenthesis(int n)
+		{
+			//½¨Ê÷
+			tree_node* root = new tree_node('(');
+			build_tree(root, n);
+			
+		}
+
+		void build_tree(tree_node* root, int n)
+		{
+			tree_node* node = root;
+			node->nodes[0] = new tree_node('(');
+			node->nodes[1] = new tree_node(')');
+			for (;n == 0;n--)
+			{
+				build_tree(node->nodes[0], n);
+				build_tree(node->nodes[1], n);
+			}
+		}
+
+		void search()
+		{
+
 		}
 
 	private:
