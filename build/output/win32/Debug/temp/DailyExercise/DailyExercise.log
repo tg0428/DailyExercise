@@ -1,6 +1,16 @@
-﻿  test.cpp
-e:\github\dailyexercise\project\test.cpp(62): warning C4477: “printf”: 格式字符串“%ld”需要类型“long”的参数，但可变参数 2 拥有了类型“unsigned __int64”
-  e:\github\dailyexercise\project\test.cpp(62): note: 请考虑在格式字符串中使用“%lld”
-  e:\github\dailyexercise\project\test.cpp(62): note: 请考虑在格式字符串中使用“%I64d”
+﻿  utility.cpp
+e:\github\dailyexercise\project\util\utility.cpp(38): warning C4244: “=”: 从“time_t”转换到“long”，可能丢失数据
+  trie_tree.cpp
+  thread_worker.cpp
+e:\github\dailyexercise\project\thread_pool\thread_worker.cpp(13): warning C4477: “printf”: 格式字符串“%lld”需要类型“__int64”的参数，但可变参数 1 拥有了类型“pthread_t”
+  thread_pool.cpp
+e:\github\dailyexercise\project\thread_pool\thread_pool.cpp(63): warning C4018: “<”: 有符号/无符号不匹配
+  thread_base.cpp
+e:\github\dailyexercise\project\thread_pool\thread_base.cpp(30): warning C4477: “printf”: 格式字符串“%lld”需要类型“__int64”的参数，但可变参数 1 拥有了类型“pthread_t”
+  mutex.cpp
+  test.cpp
+  graphic.cpp
+  dynamic_array.cpp
+  正在生成代码...
   DailyExercise.vcxproj -> E:\github\DailyExercise\build\output\win32\Debug\DailyExercise.exe
   DailyExercise.vcxproj -> E:\github\DailyExercise\build\output\win32\Debug\DailyExercise.pdb (Partial PDB)

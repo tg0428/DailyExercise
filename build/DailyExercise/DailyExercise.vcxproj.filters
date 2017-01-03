@@ -22,6 +22,9 @@
     <Filter Include="project\thread_pool">
       <UniqueIdentifier>{cf9b849c-f847-4166-99da-1de5adf71e72}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\common">
+      <UniqueIdentifier>{47ab00f5-0620-4690-803b-6f6219f88531}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\project\test.cpp">
@@ -45,11 +48,10 @@
     <ClCompile Include="..\..\project\thread_pool\thread_base.cpp">
       <Filter>project\thread_pool</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\project\thread_pool\task.cpp">
+    <ClCompile Include="..\..\project\thread_pool\mutex.cpp">
       <Filter>project\thread_pool</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\project\thread_pool\thread_worker.cpp" />
-    <ClCompile Include="..\..\project\thread_pool\mutex.cpp">
+    <ClCompile Include="..\..\project\thread_pool\thread_worker.cpp">
       <Filter>project\thread_pool</Filter>
     </ClCompile>
   </ItemGroup>
@@ -78,11 +80,14 @@
     <ClInclude Include="..\..\project\thread_pool\thread_pool.h">
       <Filter>project\thread_pool</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\project\thread_pool\mutex.h">
+      <Filter>project\thread_pool</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\project\thread_pool\thread_worker.h">
       <Filter>project\thread_pool</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\project\thread_pool\mutex.h">
-      <Filter>project\thread_pool</Filter>
+    <ClInclude Include="..\..\project\common\common.h">
+      <Filter>project\common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
