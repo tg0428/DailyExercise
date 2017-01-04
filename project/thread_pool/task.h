@@ -7,6 +7,6 @@ namespace tg
 	class task
 	{
 	public:
-		virtual void run() = 0;
+		virtual void run(const pthread_t thread_id) = 0;
 	};
 }

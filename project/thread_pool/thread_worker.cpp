@@ -10,8 +10,12 @@ namespace tg
 
 	void thread_worker::run()
 	{
-		printf("extend thread run method be invoked, id = %lld\n", get_thread_id());
 		do_job();
+	}
+
+	void thread_worker::terminal()
+	{
+
 	}
 
 	thread_worker::~thread_worker()
@@ -32,9 +36,14 @@ namespace tg
 	{
 		if (m_task != NULL)
 		{
-			m_task->run();
+			m_task->run(get_thread_id());
 		}
-		get_thread_pool()->process_finished(this);
+		thread_pool* pool = get_thread_pool();
+		if (pool != NULL)
+		{
+			pool->process_finished(this);
+		}
+		delete m_task;
 		m_task = NULL;
 	}
 }

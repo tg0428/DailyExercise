@@ -27,7 +27,6 @@ namespace tg
 		thread_base* base = (thread_base*)arg;
 		if (base != NULL)
 		{
-			printf("invoke task run method, id = %lld\n", base->get_thread_id());
 			base->run();
 		}
 		return (0);

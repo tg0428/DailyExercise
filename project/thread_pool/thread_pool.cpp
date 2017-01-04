@@ -1,6 +1,8 @@
 #include "thread_pool.h"
 #include "thread_worker.h"
 
+#include <assert.h>
+
 namespace tg
 {
 	thread_pool::thread_pool(uint32_t init_thread_num)
@@ -48,7 +50,9 @@ namespace tg
 	{
 		int ret = create_idle_thread(m_init_thread_num);
 		if (ret == m_init_thread_num)
+		{
 			return true;
+		}
 		else
 			return false;
 	}
@@ -62,51 +66,54 @@ namespace tg
 
 		for (int count = 0; count < thread_num; ++count)
 		{
+			m_idle_mutex->lock();
+			if (m_current_thread_num > m_max_thread_num)
+			{
+				assert(0);
+				return 0;
+			}
+
 			thread_base* thread_base = new thread_worker();
 			thread_base->create();
+			thread_base->set_thread_pool(this);
 
-			// insert new thread_woker into idle_list
 			m_idle_list.push_back(thread_base);
+			m_current_thread_num++;
+			m_idle_mutex->unlock();
 		}
 		return thread_num;
 	}
 
 	void thread_pool::delete_idle_thread()
 	{
+		
 	}
 
 	void thread_pool::move_thread_to_busy_list(thread_base * thread_worker)
 	{
-		// move idle thread to busy list
+		assert(m_idle_mutex || m_busy_mutex);
+		
 		m_busy_mutex->lock();
 		m_busy_list.push_back(thread_worker);
 		m_busy_mutex->unlock();
 
-		//erase thread in idle list
 		m_idle_mutex->lock();
-		std::list<tg::thread_base*>::iterator it;
-		it = find(m_idle_list.begin(), m_idle_list.end(), thread_worker);
-		if (it != m_idle_list.end())
-		{
-			m_idle_list.erase(it);
-		}
+		if (m_idle_list.size() > 0)
+			m_idle_list.pop_front();
 		m_idle_mutex->unlock();
 	}
 
 	void thread_pool::move_thread_to_idle_list(thread_base * thread_worker)
 	{
+		assert(m_idle_mutex || m_busy_mutex);
+
 		m_idle_mutex->lock();
 		m_idle_list.push_back(thread_worker);
 		m_idle_mutex->unlock();
 
-		//erase thread in busy list
 		m_busy_mutex->lock();
-		std::list<tg::thread_base*>::iterator it;
-		it = find(m_busy_list.begin(), m_busy_list.end(), thread_worker);
-		if (it != m_busy_list.end())
-		{
-			m_busy_list.erase(it);
-		}
+		if (m_busy_list.size()>0)
+			m_busy_list.pop_front();
 		m_busy_mutex->unlock();
 	}
 
@@ -114,20 +121,22 @@ namespace tg
 	{
 		m_idle_mutex->lock();
 		thread_base* temp = NULL;
-		if (m_idle_list.size() > 0)
+		if (m_current_thread_num > 0 && m_idle_list.size() > 0)
 		{
+			temp = m_idle_list.front();
+		}
+		else if (m_current_thread_num < m_max_thread_num && m_idle_list.size() == 0)
+		{
+			m_idle_mutex->unlock();
+			create_idle_thread(1);
+			m_idle_mutex->lock();
 			temp = m_idle_list.front();
 		}
 		else
 		{
-			if (m_busy_list.size() < m_max_thread_num)
-			{
-				tg::thread_base* thread_base_tg = new tg::thread_worker();
-				thread_base_tg->create();
-				temp = thread_base_tg;
-				m_idle_list.push_back(thread_base_tg);
-			}
+			return NULL;
 		}
+
 		m_idle_mutex->unlock();
 		move_thread_to_busy_list(temp);
 		return temp;

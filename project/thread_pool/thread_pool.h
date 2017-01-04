@@ -44,6 +44,7 @@ namespace tg
 	private:
 		uint32_t m_max_thread_num;
 		uint32_t m_init_thread_num;
+		uint32_t m_current_thread_num;
 		std::list<thread_base*> m_idle_list;
 		std::list<thread_base*> m_busy_list;
 		mutex* m_busy_mutex;

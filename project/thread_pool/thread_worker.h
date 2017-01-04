@@ -11,6 +11,7 @@ namespace tg
 		friend class thread_pool;
 	public:
 		virtual void run();
+		virtual void terminal();
 		~thread_worker();
 
 		void set_task(task* task);

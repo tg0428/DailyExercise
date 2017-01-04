@@ -18,12 +18,18 @@ namespace tg
 		virtual ~thread_base();
 
 		virtual void run() = 0;
+		virtual void terminal() = 0;
+
 		virtual task* get_task() = 0;
 		virtual void set_task(task* task) = 0;
 
 		static void* thread_callback(void* arg);
 
-		void set_thread_pool(thread_pool* thread_pool) { m_thread_pool = thread_pool; }
+		void set_thread_pool(thread_pool* thread_pool) 
+		{ 
+			if (thread_pool) 
+				m_thread_pool = thread_pool; 
+		}
 		thread_pool* get_thread_pool() { return m_thread_pool; }
 
 	protected:
