@@ -13,8 +13,11 @@ namespace tg
 	{
 	}
 
-	void thread_base::create()
+	void thread_base::create(FUNC_POINT func, thread_pool * pool)
 	{
+		m_thread_pool = pool;
+		m_func = func;
+
 		int res = pthread_create(&m_pthread, NULL, thread_callback, this);
 		if (res)
 		{
@@ -27,7 +30,7 @@ namespace tg
 		thread_base* base = (thread_base*)arg;
 		if (base != NULL)
 		{
-			base->run();
+			base->run(base->m_thread_pool);
 		}
 		return (0);
 	}

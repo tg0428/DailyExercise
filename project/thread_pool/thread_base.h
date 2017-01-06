@@ -8,35 +8,30 @@
 
 namespace tg
 {
+	typedef void (*FUNC_POINT)(void* args);
+
 	class task;
 	class thread_base
 	{
 		friend class thread_pool;
 	public:
-		void create();
+		void create(FUNC_POINT func, thread_pool * pool);
 		pthread_t get_thread_id() { return m_pthread; }
 		virtual ~thread_base();
 
-		virtual void run() = 0;
+		virtual void run(void* args) = 0;
 		virtual void terminal() = 0;
-
-		virtual task* get_task() = 0;
-		virtual void set_task(task* task) = 0;
 
 		static void* thread_callback(void* arg);
 
-		void set_thread_pool(thread_pool* thread_pool) 
-		{ 
-			if (thread_pool) 
-				m_thread_pool = thread_pool; 
-		}
 		thread_pool* get_thread_pool() { return m_thread_pool; }
 
 	protected:
 		thread_base();
+		pthread_t m_pthread;
+		FUNC_POINT m_func;
 
-	private:
-		pthread_t m_pthread;		
+	private:	
 		thread_pool* m_thread_pool;
 	};
 } // namespace tg

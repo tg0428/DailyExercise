@@ -10,17 +10,11 @@ namespace tg
 	{
 		friend class thread_pool;
 	public:
-		virtual void run();
+		virtual void run(void* args);
 		virtual void terminal();
 		~thread_worker();
 
-		void set_task(task* task);
-		task* get_task();
-		void do_job();
-		
 	private:
 		thread_worker();
-	private:
-		task* m_task;
 	};
 }
