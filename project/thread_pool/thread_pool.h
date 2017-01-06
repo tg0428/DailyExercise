@@ -38,7 +38,6 @@ namespace tg
 	public:
 		std::list<task*> m_task_queue;
 		mutex* m_task_mutex;
-		mutex* m_terminate_mutex;
 
 		pthread_cond_t m_manage_cond;
 		pthread_mutex_t m_manage_mutex;

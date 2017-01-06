@@ -2,6 +2,7 @@
 #include "thread_worker.h"
 
 #include <assert.h>
+#include <thread>
 
 namespace tg
 {
@@ -12,7 +13,6 @@ namespace tg
 		m_will_immediate_terminate_threads = NOT_TERMINATE;
 
 		m_task_mutex = new mutex();
-		m_terminate_mutex = new mutex();
 
 		pthread_mutex_init(&m_manage_mutex, NULL);
 		pthread_cond_init(&m_manage_cond, NULL);
@@ -25,30 +25,24 @@ namespace tg
 		terminate_all_thread();
 		pthread_mutex_destroy(&m_manage_mutex);
 		pthread_cond_destroy(&m_manage_cond);
-
-		delete m_terminate_mutex;
-		m_terminate_mutex = NULL;
 	}
 
 	void thread_pool::terminate_all_thread(bool is_immediately/* = false*/)
 	{
 		m_will_immediate_terminate_threads = (thread_terminate_method)is_immediately;
 
-		m_terminate_mutex->lock();
-
+		m_task_mutex->lock();
 		while(m_thread_list.size())
 		{
 			delete_thread(m_thread_list.front());
 		}
 
-		m_task_mutex->lock();
 		while (m_task_queue.size())
 		{
 			delete m_task_queue.front();
 			m_task_queue.pop_front();
 		}
 		m_task_mutex->unlock();
-		m_terminate_mutex->unlock();
 	}
 
 	void thread_pool::submit(task * task)
@@ -91,14 +85,13 @@ namespace tg
 				break;
 			}
 
-			pool->m_terminate_mutex->lock();
 			task* task = pool->m_task_queue.front();
 			task->run();
 
 			pool->m_task_queue.pop_front();
 			pool->m_task_mutex->unlock();
 		}
-		pool->m_terminate_mutex->unlock();
+		pool->m_task_mutex->unlock();
 	}
 
 	int thread_pool::create_idle_thread(uint32_t thread_num)
