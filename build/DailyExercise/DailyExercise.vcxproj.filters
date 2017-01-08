@@ -16,6 +16,15 @@
     <Filter Include="project\solution">
       <UniqueIdentifier>{652f35b7-9c7f-4af0-b142-d1c78f1d84db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\util">
+      <UniqueIdentifier>{2ad52e60-5ad1-4bf1-8b16-7223ddff40de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\thread_pool">
+      <UniqueIdentifier>{cf9b849c-f847-4166-99da-1de5adf71e72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\common">
+      <UniqueIdentifier>{47ab00f5-0620-4690-803b-6f6219f88531}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\project\test.cpp">
@@ -30,6 +39,21 @@
     <ClCompile Include="..\..\project\graphic\graphic.cpp">
       <Filter>project\graphic</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\project\util\utility.cpp">
+      <Filter>project\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\thread_pool\thread_pool.cpp">
+      <Filter>project\thread_pool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\thread_pool\thread_base.cpp">
+      <Filter>project\thread_pool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\thread_pool\mutex.cpp">
+      <Filter>project\thread_pool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\thread_pool\thread_worker.cpp">
+      <Filter>project\thread_pool</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\project\trieTree\trie_tree.h">
@@ -43,6 +67,27 @@
     </ClInclude>
     <ClInclude Include="..\..\project\solution\solution.h">
       <Filter>project\solution</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\util\utility.h">
+      <Filter>project\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\thread_pool\task.h">
+      <Filter>project\thread_pool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\thread_pool\thread_base.h">
+      <Filter>project\thread_pool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\thread_pool\thread_pool.h">
+      <Filter>project\thread_pool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\thread_pool\mutex.h">
+      <Filter>project\thread_pool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\thread_pool\thread_worker.h">
+      <Filter>project\thread_pool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\common\common.h">
+      <Filter>project\common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

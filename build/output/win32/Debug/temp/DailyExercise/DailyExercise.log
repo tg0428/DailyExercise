@@ -1,5 +1,3 @@
-﻿  test.cpp
-e:\workfiles\dailyexercise\project\solution\solution.h(54): warning C4018: '>=': signed/unsigned mismatch
-e:\workfiles\dailyexercise\project\solution\solution.h(147): warning C4717: 'tg::solution::search_result': recursive on all control paths, function will cause runtime stack overflow
+﻿  thread_worker.cpp
   DailyExercise.vcxproj -> E:\WorkFiles\DailyExercise\build\output\win32\Debug\DailyExercise.exe
   DailyExercise.vcxproj -> E:\WorkFiles\DailyExercise\build\output\win32\Debug\DailyExercise.pdb (Partial PDB)

@@ -4,7 +4,10 @@
 #include <math.h>
 #include <vector>
 #include <stack>
+<<<<<<< HEAD
 #include <assert.h>
+=======
+>>>>>>> f1b1686a6a71816b3af20ea0e5e40e740b43d1a8
 
 using namespace std;
 
@@ -88,6 +91,7 @@ namespace tg
 			return s.substr(max_index -1, max_length);
 		}
 
+<<<<<<< HEAD
 		bool isPalindrome(int x) {
 			if (x < 0)
 				return false;
@@ -144,6 +148,41 @@ namespace tg
 			}
 			search_result(root->left_child, result, temp, n);
 			search_result(root->right_child, result, temp, n);
+=======
+		typedef struct node
+		{
+			node(char value)
+			{
+				this->value = value;
+			}
+			char value;
+			node* nodes[2];
+		}tree_node;
+
+		vector<string> generateParenthesis(int n)
+		{
+			//½¨Ê÷
+			tree_node* root = new tree_node('(');
+			build_tree(root, n);
+			
+		}
+
+		void build_tree(tree_node* root, int n)
+		{
+			tree_node* node = root;
+			node->nodes[0] = new tree_node('(');
+			node->nodes[1] = new tree_node(')');
+			for (;n == 0;n--)
+			{
+				build_tree(node->nodes[0], n);
+				build_tree(node->nodes[1], n);
+			}
+		}
+
+		void search()
+		{
+
+>>>>>>> f1b1686a6a71816b3af20ea0e5e40e740b43d1a8
 		}
 
 	private:

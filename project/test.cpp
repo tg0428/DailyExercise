@@ -1,55 +1,38 @@
-#define SOLUTION
 #define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
-//#define TRIE_TREE
+#define HAVE_STRUCT_TIMESPEC
 
-#ifdef TRIE_TREE
-#include "trieTree/trie_tree.h"
-#endif // TRIE_TREE
+#include "thread_pool/thread_pool.h"
+#include "thread_pool/task.h"
+#include "util/utility.h"
 
-#ifdef DYNAMIC_ARRAY
-#include "dynamic_array.h"
-#endif // DYNAMIC_ARRAY
+#include <thread>
 
-#ifdef SOLUTION
-#include "solution/solution.h"
-#endif
+using namespace tg;
 
-#include "stdio.h"
+class new_task_ex : public task
+{
+	virtual void run()
+	{
+		printf("%lld", utility::getTickCount());
+		printf("** des=%lld ------new task\n", 111);
+		
+		printf("calc finish. \n");
+	}
+};
 
 int main()
 {
-#ifdef TRIE_TREE
-	tg::trie_tree* trie_tree = new tg::trie_tree();
+	thread_pool* pool = new thread_pool(3);
 
-	char* input = "abdcdabc";
-	trie_tree->insert(input);
-	printf("%s: %s = %s\n", "search result", "abdcda", trie_tree->search("abdcda") == 0 ? "not exist" : "exist");
+	for (int i = 0; i < 50000; i++) {
+		new_task_ex* task_ex = new new_task_ex();
+		pool->submit(task_ex);
+	}
 
-	trie_tree->remove_tree();
-	printf("%s: %s = %s\n", "search result", "abdcda", trie_tree->search("abdcda") == 0 ? "not exist" : "exist");
-#endif // TRIE_TREE
+	printf("submit finish. \n");
 
-#ifdef DYNAMIC_ARRAY
-	//TODO
-#endif // DYNAMIC_ARRAY
-
-#ifdef SOLUTION
-
-	tg::solution* solution = new tg::solution();
-
-	//std::string s = "abba";
-	//uint16_t res = solution->lengthOfLongestSubstring(s);
-	//printf("%s: %s = %d\n", "ori str's length", "abba", s.length());
-	//printf("%s: %s = %d\n", "longest substring length", "abba", res);
-
-// 	std::string s_new = "aaaabaaa";
-// 	printf("%s: %s = %s\n", "longestPalindrome", "aaaabaaa", solution->longestPalindrome(s_new).c_str());
-// 
-// 	printf("%s: %s = %d\n", "PalindromeNumber", "12321", solution->isPalindrome(12321));
-
-	solution->generateParenthesis(3);
-
-#endif // SOLUTION
+	getchar();
+	pool->terminate_all_thread(true);
 
 	getchar();
 	return 0;
