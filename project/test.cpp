@@ -42,8 +42,12 @@ int main()
 	//printf("%s: %s = %d\n", "ori str's length", "abba", s.length());
 	//printf("%s: %s = %d\n", "longest substring length", "abba", res);
 
-	std::string s_new = "aaabaaaa";
-	printf("%s: %s = %s\n", "longestPalindrome", "aaabaaaa", solution->longestPalindrome(s_new).c_str());
+// 	std::string s_new = "aaaabaaa";
+// 	printf("%s: %s = %s\n", "longestPalindrome", "aaaabaaa", solution->longestPalindrome(s_new).c_str());
+// 
+// 	printf("%s: %s = %d\n", "PalindromeNumber", "12321", solution->isPalindrome(12321));
+
+	solution->generateParenthesis(3);
 
 #endif // SOLUTION
 
