@@ -25,6 +25,9 @@
     <Filter Include="project\common">
       <UniqueIdentifier>{47ab00f5-0620-4690-803b-6f6219f88531}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\lru_cache">
+      <UniqueIdentifier>{6e3063f8-746d-49a8-ba20-9754a1278652}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\project\test.cpp">
@@ -83,11 +86,14 @@
     <ClInclude Include="..\..\project\thread_pool\mutex.h">
       <Filter>project\thread_pool</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\project\common\common.h">
+      <Filter>project\common</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\project\thread_pool\thread_worker.h">
       <Filter>project\thread_pool</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\project\common\common.h">
-      <Filter>project\common</Filter>
+    <ClInclude Include="..\..\project\lru_cache\lru_cache.h">
+      <Filter>project\lru_cache</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

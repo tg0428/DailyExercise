@@ -33,6 +33,7 @@
     <ClInclude Include="..\..\project\common\common.h" />
     <ClInclude Include="..\..\project\dynamic_array\dynamic_array.h" />
     <ClInclude Include="..\..\project\graphic\graphic.h" />
+    <ClInclude Include="..\..\project\lru_cache\lru_cache.h" />
     <ClInclude Include="..\..\project\solution\solution.h" />
     <ClInclude Include="..\..\project\thread_pool\mutex.h" />
     <ClInclude Include="..\..\project\thread_pool\task.h" />

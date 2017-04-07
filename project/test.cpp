@@ -4,37 +4,68 @@
 #include "thread_pool/thread_pool.h"
 #include "thread_pool/task.h"
 #include "util/utility.h"
+#include "lru_cache/lru_cache.h"
 
 #include <thread>
+#include <map>
+#include <iterator>
+#include <utility>
+#include <algorithm>
+#include <vector>
 
 using namespace tg;
+using namespace std;
 
-class new_task_ex : public task
+typedef struct v
 {
-	virtual void run()
+	int _value;
+	v(int value) :_value(value) {}
+	void print()
 	{
-		printf("%lld", utility::getTickCount());
-		printf("** des=%lld ------new task\n", 111);
-		for (int i = 0; i < 5000000000; i++)
-		{
-
-		}
-		printf("calc finish. \n");
+		printf("enter print.. value : %d\r\n", _value);
 	}
-};
+}element;
 
 int main()
 {
-	thread_pool* pool = new thread_pool(3);
+	/*lru_cache<std::string, std::string>* lru = new lru_cache<std::string,std::string>(5);
+	lru->put(std::string("111"), std::string("1111"));
+	printf("%c",lru->get("111"));*/
+	//uint64_t a = -1;
+	//printf("%d \r\n %d \r\n %d", INT_MAX, ULLONG_MAX, a);
+	//////////////////////////////////////////////////////////////////////////
+	
+	vector<element*> v;
 
-	new_task_ex* task_ex = new new_task_ex();
-	pool->submit(task_ex);
+	for (int index = 0; index < 5; ++index)
+	{
+		v.push_back(new element(index));
+	}
 
-	printf("submit finish. \n");
+	/*vector<element*>::iterator iter = v.begin();
+	while (iter != v.end())
+	{
+		printf("vector size : %d\r\n", v.size());
+		v.erase(iter);
+		(*iter)->print();
+		iter++;
+	}*/
 
-	getchar();
-	pool->terminate_all_thread(true);
-
+	bool flag = false;
+	for (int index = 0;index < v.size();++index)
+	{	
+		v[index]->print();
+		
+		printf("vector size : %d \r\n", v.size());
+		if (!flag)
+		{
+			flag = true;
+			v.push_back(new element(666));
+			v.push_back(new element(666));
+			v.push_back(new element(666));
+			v.push_back(new element(666));
+		}
+	}
 	getchar();
 	return 0;
 }
