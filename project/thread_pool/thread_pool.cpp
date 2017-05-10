@@ -30,6 +30,10 @@ namespace tg
 	void thread_pool::terminate_all_thread(bool is_immediately/* = false*/)
 	{
 		m_will_immediate_terminate_threads = (thread_terminate_method)is_immediately;
+		// broadcast each waiting thread not wait
+		pthread_mutex_lock(&m_manage_mutex);
+		pthread_cond_broadcast(&m_manage_cond);
+		pthread_mutex_unlock(&m_manage_mutex);
 
 		m_task_mutex->lock();
 		while(m_thread_list.size())
@@ -52,7 +56,7 @@ namespace tg
 		m_task_mutex->unlock();
 
 		pthread_mutex_lock(&m_manage_mutex);
-		pthread_cond_signal(&m_manage_cond);
+		pthread_cond_broadcast(&m_manage_cond);
 		pthread_mutex_unlock(&m_manage_mutex);
 	}
 
@@ -75,7 +79,7 @@ namespace tg
 			while (pool->m_task_queue.size() == 0 && pool->m_will_immediate_terminate_threads == NOT_TERMINATE)
 			{
 				pthread_mutex_lock(&pool->m_manage_mutex);
-				pthread_cond_wait(&pool->m_manage_cond, NULL);
+				pthread_cond_wait(&pool->m_manage_cond, &pool->m_manage_mutex);
 				pthread_mutex_unlock(&pool->m_manage_mutex);
 			}
 
@@ -86,10 +90,11 @@ namespace tg
 			}
 
 			task* task = pool->m_task_queue.front();
-			task->run();
 
 			pool->m_task_queue.pop_front();
 			pool->m_task_mutex->unlock();
+
+			task->run();
 		}
 		pool->m_task_mutex->unlock();
 	}

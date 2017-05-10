@@ -28,11 +28,26 @@
     <Filter Include="project\lru_cache">
       <UniqueIdentifier>{6e3063f8-746d-49a8-ba20-9754a1278652}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\test">
+      <UniqueIdentifier>{bf0105d7-6fd6-4e41-b5a7-3df127abeeb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\smart_ptr">
+      <UniqueIdentifier>{dbfd8e03-d6c6-4d90-9f56-dea8dee62408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\algorithm">
+      <UniqueIdentifier>{64c5fbcf-c0f0-4b38-8ef7-13c6ea6a0197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\algorithm\quickSort">
+      <UniqueIdentifier>{c936c07d-a8a1-4eff-8695-fc6724f9e1be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\algorithm\bobbleSort">
+      <UniqueIdentifier>{cae45c3e-fe5c-4720-aa10-2cdaadeefd4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\algorithm\heapSort">
+      <UniqueIdentifier>{92cebf02-94a6-4ff1-95db-c1012e55652f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\project\test.cpp">
-      <Filter>project</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\project\trieTree\trie_tree.cpp">
       <Filter>project\trieTree</Filter>
     </ClCompile>
@@ -56,6 +71,24 @@
     </ClCompile>
     <ClCompile Include="..\..\project\thread_pool\thread_worker.cpp">
       <Filter>project\thread_pool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\test\A.cpp">
+      <Filter>project\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\test\B.cpp">
+      <Filter>project\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\test.cpp">
+      <Filter>project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\algorithm\quickSort\quickSort.cpp">
+      <Filter>project\algorithm\quickSort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\algorithm\bobbleSort\bobbleSort.cpp">
+      <Filter>project\algorithm\bobbleSort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\algorithm\heapSort\heapSort.cpp">
+      <Filter>project\algorithm\heapSort</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,5 +128,37 @@
     <ClInclude Include="..\..\project\lru_cache\lru_cache.h">
       <Filter>project\lru_cache</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\project\test\A.h">
+      <Filter>project\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\test\B.h">
+      <Filter>project\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\common\log.h">
+      <Filter>project\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\smart_ptr\smart_ptr.h">
+      <Filter>project\smart_ptr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\quickSort\quickSort.h">
+      <Filter>project\algorithm\quickSort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\bobbleSort\bobbleSort.h">
+      <Filter>project\algorithm\bobbleSort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\heapSort\heapSort.h">
+      <Filter>project\algorithm\heapSort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\Singleton.h">
+      <Filter>project\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\SortBase.h">
+      <Filter>project\algorithm</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\readme">
+      <Filter>project</Filter>
+    </None>
   </ItemGroup>
 </Project>

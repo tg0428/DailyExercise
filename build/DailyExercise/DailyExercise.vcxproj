@@ -19,9 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\project\algorithm\bobbleSort\bobbleSort.cpp" />
+    <ClCompile Include="..\..\project\algorithm\heapSort\heapSort.cpp" />
+    <ClCompile Include="..\..\project\algorithm\quickSort\quickSort.cpp" />
     <ClCompile Include="..\..\project\dynamic_array\dynamic_array.cpp" />
     <ClCompile Include="..\..\project\graphic\graphic.cpp" />
     <ClCompile Include="..\..\project\test.cpp" />
+    <ClCompile Include="..\..\project\test\A.cpp" />
+    <ClCompile Include="..\..\project\test\B.cpp" />
     <ClCompile Include="..\..\project\thread_pool\mutex.cpp" />
     <ClCompile Include="..\..\project\thread_pool\thread_base.cpp" />
     <ClCompile Include="..\..\project\thread_pool\thread_pool.cpp" />
@@ -30,11 +35,20 @@
     <ClCompile Include="..\..\project\util\utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\project\algorithm\bobbleSort\bobbleSort.h" />
+    <ClInclude Include="..\..\project\algorithm\heapSort\heapSort.h" />
+    <ClInclude Include="..\..\project\algorithm\quickSort\quickSort.h" />
+    <ClInclude Include="..\..\project\algorithm\Singleton.h" />
+    <ClInclude Include="..\..\project\algorithm\SortBase.h" />
     <ClInclude Include="..\..\project\common\common.h" />
+    <ClInclude Include="..\..\project\common\log.h" />
     <ClInclude Include="..\..\project\dynamic_array\dynamic_array.h" />
     <ClInclude Include="..\..\project\graphic\graphic.h" />
     <ClInclude Include="..\..\project\lru_cache\lru_cache.h" />
+    <ClInclude Include="..\..\project\smart_ptr\smart_ptr.h" />
     <ClInclude Include="..\..\project\solution\solution.h" />
+    <ClInclude Include="..\..\project\test\A.h" />
+    <ClInclude Include="..\..\project\test\B.h" />
     <ClInclude Include="..\..\project\thread_pool\mutex.h" />
     <ClInclude Include="..\..\project\thread_pool\task.h" />
     <ClInclude Include="..\..\project\thread_pool\thread_base.h" />
@@ -42,6 +56,9 @@
     <ClInclude Include="..\..\project\thread_pool\thread_worker.h" />
     <ClInclude Include="..\..\project\trieTree\trie_tree.h" />
     <ClInclude Include="..\..\project\util\utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\readme" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D3091E2D-8694-4623-B6A7-F45CB076ADEE}</ProjectGuid>

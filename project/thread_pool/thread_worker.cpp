@@ -16,7 +16,7 @@ namespace tg
 
 	void thread_worker::terminal()
 	{
-		pthread_join(m_pthread, NULL);
+		pthread_detach(m_pthread);
 	}
 
 	thread_worker::~thread_worker()
