@@ -24,28 +24,29 @@ namespace tg
 
 	void heapSort::adjust_heap(vector<int>& to_adjust_arr, int index, int size)
 	{
-		int first_cmp_index = 0, second_cmp_index = 0;
-		if (index <= size / 2 - 1)
+		size_t left_child = 2 * index + 1, right_child = 2 * index + 2, max_node_index = 0;
+		if (index <= size / 2 - 1)	// index为非叶子结点
 		{
-			if (2 * index + 2 < size - 1)
-			{
-				first_cmp_index = _compare_Int_func(2 * index + 1, 2 * index + 2, to_adjust_arr);
-			}
-			else
-			{
-				first_cmp_index = 2 * index + 1;
-			}
-			second_cmp_index = _compare_Int_func(first_cmp_index, index, to_adjust_arr);
+			// 寻找子节点中的较大者
+			if (right_child < size && to_adjust_arr[left_child] > to_adjust_arr[right_child])
+				max_node_index = left_child;
 
-			if (second_cmp_index != index)
-				swap(to_adjust_arr[second_cmp_index], to_adjust_arr[index]);
+			if (right_child == size)
+				max_node_index = left_child;
+
+			if (right_child < size && to_adjust_arr[left_child] < to_adjust_arr[right_child])
+				max_node_index = right_child;
+
+			// 较大者与当前根节点对比，交换值，无序交换，则无需再遍历子树
+			if (to_adjust_arr[max_node_index] > to_adjust_arr[index])
+				swap(to_adjust_arr[index], to_adjust_arr[max_node_index]);
 			else
 				return;
 		}
 
 		if (size > 1)
 		{
-			adjust_heap(to_adjust_arr, second_cmp_index, size);
+			adjust_heap(to_adjust_arr, max_node_index, size);
 		}
 	}
 
@@ -56,31 +57,7 @@ namespace tg
 
 		for (int index = last_noleap_node - 1; index >= 0; --index)
 		{
-			int first_cmp_index = 0, second_cmp_index = 0;
-			if (2 * index + 2 <= origin_arr.size() - 1)
-			{
-				first_cmp_index = _compare_Int_func(2*index+1, 2*index+2, origin_arr);
-			}
-			else
-			{
-				first_cmp_index = 2 * index + 1;
-			}
-			second_cmp_index = _compare_Int_func(index, first_cmp_index, origin_arr);
-			swap(origin_arr[second_cmp_index], origin_arr[index]);
+			adjust_heap(origin_arr, index, origin_arr.size());
 		}
-	}
-
-	int heapSort::_compare_Int_func(int lhs, int mhs, int rhs, vector<int>& vec)
-	{
-		if (vec[lhs] > vec[mhs])
-			if (vec[lhs] > vec[rhs])
-				return lhs;
-			else
-				return rhs;
-		else
-			if (vec[mhs] > vec[rhs])
-				return mhs;
-			else
-				return rhs;
 	}
 }

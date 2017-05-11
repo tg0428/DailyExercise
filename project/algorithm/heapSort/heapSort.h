@@ -15,8 +15,5 @@ namespace tg
 		
 		void adjust_heap(vector<int>& to_adjust_arr, int index, int size);
 		void init_heap(vector<int>& origin_arr);
-
-	private:
-		int _compare_Int_func(int lhs, int mhs, int rhs, vector<int>& vec);
 	};
 }
