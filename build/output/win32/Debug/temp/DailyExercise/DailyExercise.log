@@ -1,10 +1,32 @@
-﻿  heapSort.cpp
-e:\github\dailyexercise\project\algorithm\heapsort\heapsort.cpp(60): warning C4018: “<=”: 有符号/无符号不匹配
+﻿  test.cpp
+e:\github\dailyexercise\project\algorithm\sortbase.h(20): warning C4244: “return”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+  e:\github\dailyexercise\project\algorithm\sortbase.h(17): note: 编译类 模板 成员函数“unsigned long tg::SortBase<tg::heapSort>::cusume_time(void)”时
+  e:\github\dailyexercise\project\test.cpp(55): note: 参见对正在编译的函数 模板 实例化“unsigned long tg::SortBase<tg::heapSort>::cusume_time(void)”的引用
+  e:\github\dailyexercise\project\algorithm\heapsort\heapsort.h(8): note: 参见对正在编译的类 模板 实例化“tg::SortBase<tg::heapSort>”的引用
+  AVLTreeSearch.cpp
+  quickSort.cpp
+e:\github\dailyexercise\project\algorithm\sortbase.h(36): warning C4244: “=”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+  e:\github\dailyexercise\project\algorithm\sortbase.h(36): note: 编译类 模板 成员函数“tg::SortBase<tg::quickSort>::SortBase(void)”时
+  e:\github\dailyexercise\project\algorithm\quicksort\quicksort.cpp(6): note: 参见对正在编译的函数 模板 实例化“tg::SortBase<tg::quickSort>::SortBase(void)”的引用
+  e:\github\dailyexercise\project\algorithm\quicksort\quicksort.h(11): note: 参见对正在编译的类 模板 实例化“tg::SortBase<tg::quickSort>”的引用
+e:\github\dailyexercise\project\algorithm\sortbase.h(20): warning C4244: “return”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+  e:\github\dailyexercise\project\algorithm\sortbase.h(17): note: 编译类 模板 成员函数“unsigned long tg::SortBase<tg::quickSort>::cusume_time(void)”时
+  heapSort.cpp
+e:\github\dailyexercise\project\algorithm\heapsort\heapsort.cpp(31): warning C4018: “<”: 有符号/无符号不匹配
+e:\github\dailyexercise\project\algorithm\heapsort\heapsort.cpp(37): warning C4018: “<”: 有符号/无符号不匹配
 e:\github\dailyexercise\project\algorithm\sortbase.h(36): warning C4244: “=”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
   e:\github\dailyexercise\project\algorithm\sortbase.h(36): note: 编译类 模板 成员函数“tg::SortBase<tg::heapSort>::SortBase(void)”时
   e:\github\dailyexercise\project\algorithm\heapsort\heapsort.cpp(22): note: 参见对正在编译的函数 模板 实例化“tg::SortBase<tg::heapSort>::SortBase(void)”的引用
   e:\github\dailyexercise\project\algorithm\heapsort\heapsort.h(8): note: 参见对正在编译的类 模板 实例化“tg::SortBase<tg::heapSort>”的引用
 e:\github\dailyexercise\project\algorithm\sortbase.h(20): warning C4244: “return”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
   e:\github\dailyexercise\project\algorithm\sortbase.h(17): note: 编译类 模板 成员函数“unsigned long tg::SortBase<tg::heapSort>::cusume_time(void)”时
+  bubbleSort.cpp
+e:\github\dailyexercise\project\algorithm\sortbase.h(36): warning C4244: “=”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+  e:\github\dailyexercise\project\algorithm\sortbase.h(36): note: 编译类 模板 成员函数“tg::SortBase<tg::bubbleSort>::SortBase(void)”时
+  e:\github\dailyexercise\project\algorithm\bubblesort\bubblesort.cpp(7): note: 参见对正在编译的函数 模板 实例化“tg::SortBase<tg::bubbleSort>::SortBase(void)”的引用
+  e:\github\dailyexercise\project\algorithm\bubblesort\bubblesort.h(10): note: 参见对正在编译的类 模板 实例化“tg::SortBase<tg::bubbleSort>”的引用
+e:\github\dailyexercise\project\algorithm\sortbase.h(20): warning C4244: “return”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+  e:\github\dailyexercise\project\algorithm\sortbase.h(17): note: 编译类 模板 成员函数“unsigned long tg::SortBase<tg::bubbleSort>::cusume_time(void)”时
+  正在生成代码...
   DailyExercise.vcxproj -> E:\github\DailyExercise\build\output\win32\Debug\DailyExercise.exe
   DailyExercise.vcxproj -> E:\github\DailyExercise\build\output\win32\Debug\DailyExercise.pdb (Partial PDB)

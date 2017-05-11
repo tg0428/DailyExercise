@@ -4,17 +4,8 @@
     <Filter Include="project">
       <UniqueIdentifier>{373f3548-26b1-4fba-890b-4ad3b4cb270a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="project\trieTree">
-      <UniqueIdentifier>{6f8d7f2d-d91e-4f91-9a04-0f15df5577a3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="project\dynamic_array">
       <UniqueIdentifier>{7ac9ba3b-006e-45ef-9ea3-429e4e2f20d2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="project\graphic">
-      <UniqueIdentifier>{e1975f27-8c65-41a1-bb23-c21630b6129a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="project\solution">
-      <UniqueIdentifier>{652f35b7-9c7f-4af0-b142-d1c78f1d84db}</UniqueIdentifier>
     </Filter>
     <Filter Include="project\util">
       <UniqueIdentifier>{2ad52e60-5ad1-4bf1-8b16-7223ddff40de}</UniqueIdentifier>
@@ -25,12 +16,6 @@
     <Filter Include="project\common">
       <UniqueIdentifier>{47ab00f5-0620-4690-803b-6f6219f88531}</UniqueIdentifier>
     </Filter>
-    <Filter Include="project\lru_cache">
-      <UniqueIdentifier>{6e3063f8-746d-49a8-ba20-9754a1278652}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="project\test">
-      <UniqueIdentifier>{bf0105d7-6fd6-4e41-b5a7-3df127abeeb1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="project\smart_ptr">
       <UniqueIdentifier>{dbfd8e03-d6c6-4d90-9f56-dea8dee62408}</UniqueIdentifier>
     </Filter>
@@ -40,22 +25,31 @@
     <Filter Include="project\algorithm\quickSort">
       <UniqueIdentifier>{c936c07d-a8a1-4eff-8695-fc6724f9e1be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="project\algorithm\bobbleSort">
-      <UniqueIdentifier>{cae45c3e-fe5c-4720-aa10-2cdaadeefd4e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="project\algorithm\heapSort">
       <UniqueIdentifier>{92cebf02-94a6-4ff1-95db-c1012e55652f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\algorithm\hash">
+      <UniqueIdentifier>{6df8ce55-3659-425c-bfc0-f65af9104b1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\algorithm\graphic">
+      <UniqueIdentifier>{e1975f27-8c65-41a1-bb23-c21630b6129a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\algorithm\trieTree">
+      <UniqueIdentifier>{6f8d7f2d-d91e-4f91-9a04-0f15df5577a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\algorithm\lru_cache">
+      <UniqueIdentifier>{6e3063f8-746d-49a8-ba20-9754a1278652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\algorithm\bubbleSort">
+      <UniqueIdentifier>{cae45c3e-fe5c-4720-aa10-2cdaadeefd4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project\algorithm\search">
+      <UniqueIdentifier>{f2026329-ac3d-4e1b-b267-246642410685}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\project\trieTree\trie_tree.cpp">
-      <Filter>project\trieTree</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\project\dynamic_array\dynamic_array.cpp">
       <Filter>project\dynamic_array</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\project\graphic\graphic.cpp">
-      <Filter>project\graphic</Filter>
     </ClCompile>
     <ClCompile Include="..\..\project\util\utility.cpp">
       <Filter>project\util</Filter>
@@ -72,37 +66,31 @@
     <ClCompile Include="..\..\project\thread_pool\thread_worker.cpp">
       <Filter>project\thread_pool</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\project\test\A.cpp">
-      <Filter>project\test</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\project\test\B.cpp">
-      <Filter>project\test</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\project\test.cpp">
       <Filter>project</Filter>
     </ClCompile>
     <ClCompile Include="..\..\project\algorithm\quickSort\quickSort.cpp">
       <Filter>project\algorithm\quickSort</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\project\algorithm\bobbleSort\bobbleSort.cpp">
-      <Filter>project\algorithm\bobbleSort</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\project\algorithm\heapSort\heapSort.cpp">
       <Filter>project\algorithm\heapSort</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\project\algorithm\graphic\graphic.cpp">
+      <Filter>project\algorithm\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\algorithm\trieTree\trie_tree.cpp">
+      <Filter>project\algorithm\trieTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\algorithm\bubbleSort\bubbleSort.cpp">
+      <Filter>project\algorithm\bubbleSort</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\algorithm\search\AVLTreeSearch.cpp">
+      <Filter>project\algorithm\search</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\project\trieTree\trie_tree.h">
-      <Filter>project\trieTree</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\project\dynamic_array\dynamic_array.h">
       <Filter>project\dynamic_array</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\project\graphic\graphic.h">
-      <Filter>project\graphic</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\project\solution\solution.h">
-      <Filter>project\solution</Filter>
     </ClInclude>
     <ClInclude Include="..\..\project\util\utility.h">
       <Filter>project\util</Filter>
@@ -125,15 +113,6 @@
     <ClInclude Include="..\..\project\thread_pool\thread_worker.h">
       <Filter>project\thread_pool</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\project\lru_cache\lru_cache.h">
-      <Filter>project\lru_cache</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\project\test\A.h">
-      <Filter>project\test</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\project\test\B.h">
-      <Filter>project\test</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\project\common\log.h">
       <Filter>project\common</Filter>
     </ClInclude>
@@ -143,17 +122,35 @@
     <ClInclude Include="..\..\project\algorithm\quickSort\quickSort.h">
       <Filter>project\algorithm\quickSort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\project\algorithm\bobbleSort\bobbleSort.h">
-      <Filter>project\algorithm\bobbleSort</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\project\algorithm\heapSort\heapSort.h">
       <Filter>project\algorithm\heapSort</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\project\algorithm\Singleton.h">
-      <Filter>project\algorithm</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\project\algorithm\SortBase.h">
       <Filter>project\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\lru_cache\lru_cache.h">
+      <Filter>project\algorithm\lru_cache</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\graphic\graphic.h">
+      <Filter>project\algorithm\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\trieTree\trie_tree.h">
+      <Filter>project\algorithm\trieTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\hash\hash.h">
+      <Filter>project\algorithm\hash</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\bubbleSort\bubbleSort.h">
+      <Filter>project\algorithm\bubbleSort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\search\AVLTreeSearch.h">
+      <Filter>project\algorithm\search</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\SearchBase.h">
+      <Filter>project\algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\common\Singleton.h">
+      <Filter>project\common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

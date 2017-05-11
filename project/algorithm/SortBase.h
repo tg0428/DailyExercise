@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 
-#include "Singleton.h"
+#include "../common/Singleton.h"
 #include "../util/utility.h"
 
 namespace tg
