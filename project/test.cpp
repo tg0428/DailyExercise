@@ -20,6 +20,9 @@
 #include "algorithm/bubbleSort/bubbleSort.h"
 #include "algorithm/heapSort/heapSort.h"
 
+//hash
+#include "algorithm/hash/hash.h"
+
 using namespace tg;
 using namespace std;
 
@@ -35,25 +38,26 @@ void print_arr(const vector<int>& vector_in, const char* priefix)
 
 int main()
 {
-	// use rand num to init a disorder vector
-	srand((unsigned)time(NULL));
-	vector<int> disorder_vector;
+	hashtable<int,int>* ht = new hashtable<int,int>();
 
-	for (int index = 0; index < 30; ++index)
-	{
-		disorder_vector.push_back(rand());
-	}
+	ht->Insert(20, 40);
+	ht->Insert(21, 40);
+	ht->Insert(22, 40);
+	ht->Insert(23, 40);
+	ht->Insert(24, 40);
+	ht->Insert(25, 40);
+	ht->Insert(26, 40);
+	ht->Insert(27, 40);
+	ht->Insert(28, 40);
+	ht->Insert(29, 40);
+	ht->Insert(30, 40);
+	ht->Insert(31, 40);
+	ht->Insert(32, 40);
 
-	// declare a Sort Object
-	SortBase<heapSort>* object_4_hs = SortBase<heapSort>::create_instance();
-
-	// use sort algorithm to sort arr
-	object_4_hs->Sort(disorder_vector);
-
-	print_arr(disorder_vector, "ÅÅÐòºó");
-
-	printf("ºÄÊ± -- %d ms", object_4_hs->cusume_time());
-
+	ht->Remove(32);
+	ht->Remove(29);
+	ht->Remove(23);
+	cout << ht->to_String().c_str();
  	getchar();
 	return 0;
 }
