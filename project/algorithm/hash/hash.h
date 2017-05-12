@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <sstream>
+#include <algorithm>
 
 namespace tg
 {
@@ -9,9 +10,25 @@ namespace tg
 template<typename T>
 	struct _DefaultHashFunc
 	{
-		size_t operator()(T key, size_t capacity)
+		size_t operator()(T key, size_t capacity) const
 		{
 			// hash function .. 除留余数法
+			// 利用编译器 选择相应重载函数生成hash值
+			return hash(key, capacity);
+		}
+
+		size_t hash(string key, size_t capacity) const
+		{
+			unsigned long factor = 0;
+			for (int pos = 0; pos < key.size(); ++pos)
+			{
+				factor = factor * 3 + key[pos];
+			}
+			return factor % capacity;
+		}
+
+		size_t hash(size_t key, size_t capacity) const
+		{
 			return key % capacity;
 		}
 	};
@@ -32,26 +49,26 @@ template<typename K, typename V, typename HASHFUNCTION = _DefaultHashFunc<K>>
 	{
 	public:
 		bucketImpl() { _num_ele = 0; }
-		~bucketImpl() {}
+		~bucketImpl() { free_bucket(); }
 
 		typedef struct bucketNode
 		{
 			K _Key;
 			V _Value;
 			bucketNode * _Next;
-			bucketNode(K& key, V& value, bucketNode* node)
+			bucketNode(const K& key, const V& value, bucketNode* node)
 				: _Key(key), _Value(value), _Next(node)
 			{
 			}
 		} Node;
 
 	public:
-		bool insert(K& key, V& value)
+		bool insert(const K& key, const V& value)
 		{
 			return insert_unqiue(key, value);
 		}
 
-		bool remove(K& key)
+		bool remove(const K& key)
 		{
 			if (_buckets_v.empty())
 				return false;
@@ -70,6 +87,9 @@ template<typename K, typename V, typename HASHFUNCTION = _DefaultHashFunc<K>>
 				_buckets_v[pos] = node->_Next;
 				delete node;
 				node = nullptr;
+
+				--_num_ele;
+				resize(_num_ele);
 			}
 			else
 			{
@@ -95,7 +115,7 @@ template<typename K, typename V, typename HASHFUNCTION = _DefaultHashFunc<K>>
 			return false;
 		}
 
-		Node * find(K& key)
+		Node * find(const K& key)
 		{
 			size_t pos = HASHFUNCTION()(key, _buckets_v.capacity());
 
@@ -114,16 +134,28 @@ template<typename K, typename V, typename HASHFUNCTION = _DefaultHashFunc<K>>
 		string to_string()
 		{
 			stringstream ss;
-			for (int pos = 0; pos < _buckets_v.size(); ++pos)
-			{
-				Node * node = _buckets_v[pos];
+			for_each(begin(_buckets_v), end(_buckets_v), [&](const Node * node) {
 				while (node)
 				{
-					ss << "{" << node->_Key << "," << node->_Value << "} \r\n";
+					ss << "{" << node->_Key << ", " << node->_Value << "} \r\n";
 					node = node->_Next;
 				}
-			}
+			});
 			return ss.str();
+		}
+
+		void free_bucket()
+		{
+			for_each(begin(_buckets_v), end(_buckets_v), [](Node * node) {
+				while (node)
+				{
+					Node * bak = node;
+					node = node->_Next;
+
+					delete bak;
+					bak = nullptr;
+				}
+			});
 		}
 
 	private:
@@ -131,7 +163,7 @@ template<typename K, typename V, typename HASHFUNCTION = _DefaultHashFunc<K>>
 		unsigned long calc_prime_index(size_t num)
 		{
 			const unsigned long * first = __prime_list;
-			const unsigned long * last = __prime_list + num;
+			const unsigned long * last = __prime_list + __num_primes;
 			const unsigned long * index = lower_bound(first, last, num);
 
 			return index == last ? *(last - 1) : *first;
@@ -140,7 +172,7 @@ template<typename K, typename V, typename HASHFUNCTION = _DefaultHashFunc<K>>
 		void resize(size_t new_num)
 		{
 			size_t old_num = _buckets_v.size();
-			if (new_num > old_num)
+			if (new_num > old_num)			// make sure load_factor is less than value 1.. (load_factor = num_ele / buckets's capacity)
 			{
 				const unsigned long num = next_size(new_num);
 				if (num > old_num)
@@ -163,7 +195,7 @@ template<typename K, typename V, typename HASHFUNCTION = _DefaultHashFunc<K>>
 			}
 		}
 
-		bool insert_unqiue(K& key, V& value)
+		bool insert_unqiue(const K& key, const V& value)
 		{
 			bool ret = equal_with(key);
 
@@ -191,7 +223,7 @@ template<typename K, typename V, typename HASHFUNCTION = _DefaultHashFunc<K>>
 			return false;
 		}
 
-		bool equal_with(K& key)
+		bool equal_with(const K& key)
 		{
 			if (!_buckets_v.empty())
 			{
@@ -224,11 +256,13 @@ template<typename K, typename V>
 	{
 	public:
 		hashtable() { _impl = new bucketImpl<K, V>(); }
-		inline bool Insert(K&& key, V&& value) { return _impl->insert(key, value); }
-		inline bool Remove(K&& key) { return _impl->remove(key); }
-		inline V    Find(K&& key) const { return _impl->find(key)->_Value; }
-		inline int  Size() { return _impl->size(); }
-		inline string to_String() { return _impl->to_string(); }
+		virtual ~hashtable() { delete _impl;_impl = nullptr; }
+
+		inline bool		Insert(const K& key, const V& value) { return _impl->insert(key, value); }
+		inline bool		Remove(const K& key)			     { return _impl->remove(key); }
+		inline V		Find(const K& key) const             { return _impl->find(key)->_Value; }
+		inline int		Size()								 { return _impl->size(); }
+		inline string	to_String()							 { return _impl->to_string(); }
 
 	private:
 		typedef bucketImpl<K, V> _IMPL;

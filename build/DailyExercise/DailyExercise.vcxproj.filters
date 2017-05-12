@@ -113,9 +113,6 @@
     <ClInclude Include="..\..\project\thread_pool\thread_worker.h">
       <Filter>project\thread_pool</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\project\common\log.h">
-      <Filter>project\common</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\project\smart_ptr\smart_ptr.h">
       <Filter>project\smart_ptr</Filter>
     </ClInclude>
@@ -151,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="..\..\project\common\Singleton.h">
       <Filter>project\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\util\log.h">
+      <Filter>project\util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,23 +2,7 @@
 #define HAVE_STRUCT_TIMESPEC
 
 #include "util/utility.h"
-
-#include <thread>
-#include <map>
-#include <iterator>
-#include <utility>
-#include <algorithm>
-#include <vector>
-#include <list>
 #include <iostream>
-
-// c++ 11
-#include <functional>
-
-// sort
-#include "algorithm/quickSort/quickSort.h"
-#include "algorithm/bubbleSort/bubbleSort.h"
-#include "algorithm/heapSort/heapSort.h"
 
 //hash
 #include "algorithm/hash/hash.h"
@@ -26,38 +10,47 @@
 using namespace tg;
 using namespace std;
 
-void print_arr(const vector<int>& vector_in, const char* priefix)
-{
-	printf("[%s] ", priefix);
-	for_each(begin(vector_in), end(vector_in), [](const int& value) {
-		printf("%d.  ", value);
-	});
-
-	printf("\r\n");
-}
-
 int main()
 {
-	hashtable<int,int>* ht = new hashtable<int,int>();
+	hashtable<string, string> ht_s;
+	ht_s.Insert("hello", "world");
+	ht_s.Insert("bucket", "hello");
+	cout << ht_s.to_String().c_str() << " table size : " << ht_s.Size() << endl;
 
-	ht->Insert(20, 40);
-	ht->Insert(21, 40);
-	ht->Insert(22, 40);
-	ht->Insert(23, 40);
-	ht->Insert(24, 40);
-	ht->Insert(25, 40);
-	ht->Insert(26, 40);
-	ht->Insert(27, 40);
-	ht->Insert(28, 40);
-	ht->Insert(29, 40);
-	ht->Insert(30, 40);
-	ht->Insert(31, 40);
-	ht->Insert(32, 40);
+	hashtable<int, int> ht_left_value;
 
-	ht->Remove(32);
-	ht->Remove(29);
-	ht->Remove(23);
-	cout << ht->to_String().c_str();
+	srand(time(NULL));
+	int choose_key = 0, value = 0;
+	unsigned long start_build_tick = utility::getTickCount();
+	for (int index = 0; index < 10000; ++index)
+	{
+		choose_key++;
+		value = rand();
+		ht_left_value.Insert(choose_key, value);
+	}
+	unsigned long duration_build = utility::getTickCount() - start_build_tick;
+
+	cout << "build cusume time : " << duration_build << endl;
+
+	unsigned long start_find_tick = utility::getTickCount();
+	int ret = ht_left_value.Find(choose_key);
+	unsigned long duration_find = utility::getTickCount() - start_find_tick;
+
+	cout << "find : origin pair -- ["
+		<< choose_key 
+		<< ","
+		<< value
+		<< "] result : [ key :"
+		<< choose_key
+		<< ", " 
+		<< ret 
+		<< "] size :"
+		<< ht_left_value.Size() << endl;
+		 
+	cout << " find cusume time : "
+		<< duration_find
+		<< endl;
+
  	getchar();
 	return 0;
 }

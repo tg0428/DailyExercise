@@ -45,7 +45,6 @@
     <ClInclude Include="..\..\project\algorithm\SortBase.h" />
     <ClInclude Include="..\..\project\algorithm\trieTree\trie_tree.h" />
     <ClInclude Include="..\..\project\common\common.h" />
-    <ClInclude Include="..\..\project\common\log.h" />
     <ClInclude Include="..\..\project\common\Singleton.h" />
     <ClInclude Include="..\..\project\dynamic_array\dynamic_array.h" />
     <ClInclude Include="..\..\project\smart_ptr\smart_ptr.h" />
@@ -54,6 +53,7 @@
     <ClInclude Include="..\..\project\thread_pool\thread_base.h" />
     <ClInclude Include="..\..\project\thread_pool\thread_pool.h" />
     <ClInclude Include="..\..\project\thread_pool\thread_worker.h" />
+    <ClInclude Include="..\..\project\util\log.h" />
     <ClInclude Include="..\..\project\util\utility.h" />
   </ItemGroup>
   <ItemGroup>
