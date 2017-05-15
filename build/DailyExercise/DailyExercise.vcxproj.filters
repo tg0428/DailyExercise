@@ -46,6 +46,9 @@
     <Filter Include="project\algorithm\search">
       <UniqueIdentifier>{f2026329-ac3d-4e1b-b267-246642410685}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\algorithm\RBTree">
+      <UniqueIdentifier>{a27e3570-954c-4700-9f5c-43d90b03bd09}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\project\dynamic_array\dynamic_array.cpp">
@@ -86,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="..\..\project\algorithm\search\AVLTreeSearch.cpp">
       <Filter>project\algorithm\search</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\algorithm\RBTree\RBTree.cpp">
+      <Filter>project\algorithm\RBTree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="..\..\project\util\log.h">
       <Filter>project\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\RBTree\RBTree.h">
+      <Filter>project\algorithm\RBTree</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

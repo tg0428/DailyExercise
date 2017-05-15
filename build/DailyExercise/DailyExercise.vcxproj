@@ -23,6 +23,7 @@
     <ClCompile Include="..\..\project\algorithm\graphic\graphic.cpp" />
     <ClCompile Include="..\..\project\algorithm\heapSort\heapSort.cpp" />
     <ClCompile Include="..\..\project\algorithm\quickSort\quickSort.cpp" />
+    <ClCompile Include="..\..\project\algorithm\RBTree\RBTree.cpp" />
     <ClCompile Include="..\..\project\algorithm\search\AVLTreeSearch.cpp" />
     <ClCompile Include="..\..\project\algorithm\trieTree\trie_tree.cpp" />
     <ClCompile Include="..\..\project\dynamic_array\dynamic_array.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="..\..\project\algorithm\heapSort\heapSort.h" />
     <ClInclude Include="..\..\project\algorithm\lru_cache\lru_cache.h" />
     <ClInclude Include="..\..\project\algorithm\quickSort\quickSort.h" />
+    <ClInclude Include="..\..\project\algorithm\RBTree\RBTree.h" />
     <ClInclude Include="..\..\project\algorithm\SearchBase.h" />
     <ClInclude Include="..\..\project\algorithm\search\AVLTreeSearch.h" />
     <ClInclude Include="..\..\project\algorithm\SortBase.h" />
