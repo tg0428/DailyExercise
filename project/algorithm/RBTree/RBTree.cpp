@@ -186,6 +186,13 @@ namespace tg
 				// 判断插入节点的叔叔节点颜色是否为黑色
 				Node * unclePtr = gp->_rChild;
 				if (clrType(unclePtr, RBTREE_BLACK))
+				{
+
+				}
+				else
+				{
+
+				}
 			}
 			// 判断插入的节点是在父节点的右子树的左节点还是右节点 (即 右右 or 右左)
 			else
