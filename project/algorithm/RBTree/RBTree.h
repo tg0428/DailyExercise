@@ -1,11 +1,21 @@
 #pragma once
 
+#include <string>
+#include <sstream>
+
 namespace tg
 {
 	enum colorType
 	{
 		RBTREE_RED,
 		RBTREE_BLACK
+	};
+
+	enum traversalModel
+	{
+		PREORDER,
+		INORDER,
+		POSTORDER
 	};
 
 	typedef struct treeNode
@@ -22,8 +32,22 @@ namespace tg
 			_lChild = nullptr;
 			_rChild = nullptr;
 		}
+
+		~treeNode()
+		{
+			printf("destory.. %d\r\n", _key);
+		}
+
+		std::string to_string()
+		{
+			std::stringstream ss;
+			ss << "key : " << _key << " -- clrtype : " << (_nodeType == RBTREE_BLACK ? "RBTREE_BLACK" : "RBTREE_RED") << "\r\n";
+			return ss.str();
+		}
 	} Node;
 
+	typedef void(*__process)(Node* node);
+	
 	class RBTree
 	{
 	public:
@@ -33,6 +57,8 @@ namespace tg
 		void insertNode(const int& value);			// 插入节点
 		void findNode(const int& value);			// 查找节点
 		void removeNode(const int& value);			// 删除节点
+		std::string to_string();					// 节点打印
+		size_t size() { return _Tree_Size; }		// 红黑树size
 
 	private:
 		void init();								// 初始化红黑树
@@ -51,10 +77,19 @@ namespace tg
 		void balanceRBTree(Node* node);				// 平衡化
 
 		bool clrType(Node* node, colorType type);					// 识别节点颜色
+		void traversalTree(traversalModel type, __process func);	// 遍历红黑树
+
+		void preorderTraversal(Node * node);									// 先序遍历
+		void inorderTraversal(Node * node, __process func = nullptr);			// 中序遍历
+		void postorderTraversal(Node * node);									// 后序遍历
+
+		static void free_node(Node* node) { delete node; node = nullptr; }
 
 	private:
 		Node * _Head;
 		Node * _Root;
+		std::stringstream _SS;
+		size_t _Tree_Size;
 	};
 }
 

@@ -10,6 +10,7 @@ namespace tg
 
 	RBTree::~RBTree()
 	{
+		traversalTree(INORDER, free_node);
 	}
 
 	void RBTree::insertNode(const int& value)
@@ -26,15 +27,17 @@ namespace tg
 		}
 
 		Node * ptr = _Root;
-		while (ptr)
+		while (ptr && node_n != _Root)
 		{
 			// 判断新节点的值与父节点值的大小关系
 			if (node_n->_key >= ptr->_key)
 			{
 				if (ptr->_rChild == nullptr)
 				{
-					ptr->_rChild = node_n;		// 就位
+					rightMost(ptr, node_n);		// 就位
+					parentMost(node_n, ptr);
 					color(node_n, RBTREE_RED);
+					break;
 				}
 				ptr = ptr->_rChild;
 			}
@@ -42,25 +45,52 @@ namespace tg
 			{
 				if (ptr->_lChild == nullptr)
 				{
-					ptr->_lChild = node_n;		// 就位
+					leftMost(ptr, node_n);		// 就位
+					parentMost(node_n, ptr);
 					color(node_n, RBTREE_RED);
+					break;
 				}
 				ptr = ptr->_lChild;
 			}
 		}
 
+		++_Tree_Size;
+
 		// balance
-		balanceRBTree(_Root);
+		balanceRBTree(node_n);
 	}
 
 	void RBTree::findNode(const int& value)
 	{
-		// TODO
+		Node* node = _Root;
+		while (node)
+		{
+			if (value == node->_key)
+			{
+				printf("ret : %s", node->to_string().c_str());
+				return;
+			}
+
+			if (value > node->_key)
+			{
+				node = node->_rChild;
+			}
+			else
+			{
+				node = node->_lChild;
+			}
+		}
 	}
 
 	void RBTree::removeNode(const int& value)
 	{
 		// TODO
+	}
+
+	std::string RBTree::to_string()
+	{
+		traversalTree(INORDER, nullptr);
+		return _SS.str();
 	}
 
 	void RBTree::init()
@@ -117,7 +147,7 @@ namespace tg
 		if (node->_parent->_parent == node)		// head
 		{
 			_Root = node_store_rchild;
-			parentMost(_Head, node_store_rchild)
+			parentMost(_Head, node_store_rchild);
 		}
 		else
 		{
@@ -174,37 +204,139 @@ namespace tg
 		
 		auto judgeHasParentAndClrType = [&](Node* node_lambda)->bool {
 			parentPtr = parent(node_lambda);
-			return clrType(parentPtr, RBTREE_BLACK);
+			return clrType(parentPtr, RBTREE_RED);
 		};
 
+		// 插入节点的父节点若为黑色就直接插入，红色进行特殊判断
 		while (judgeHasParentAndClrType(node))
 		{
 			Node * gp = parent(parentPtr);
-			// 判断插入的节点是在父节点的左子树的左节点还是右节点 (即 左左 or 左右)
+			Node * unclePtr;
+			// 分插入节点在父节点的左子树还是右子树上
 			if (gp && gp->_lChild == parentPtr)
 			{
-				// 判断插入节点的叔叔节点颜色是否为黑色
-				Node * unclePtr = gp->_rChild;
-				if (clrType(unclePtr, RBTREE_BLACK))
+				unclePtr = gp->_rChild;
+				if (unclePtr == nullptr || clrType(unclePtr, RBTREE_BLACK))		// 父节点为红色，叔父节点为黑色，祖父节点为黑色
 				{
+					if (parentPtr->_lChild == node)
+					{
+						// 单旋
+						treeRightRotate(gp);
+						color(node, RBTREE_BLACK);
+					}
+					else
+					{
+						// 双旋转
+						treeLeftRotate(parentPtr);
+						treeRightRotate(gp);
 
+						color(node, RBTREE_BLACK);
+						color(gp, RBTREE_RED);
+					}
+					break;
 				}
-				else
+				else if (clrType(unclePtr, RBTREE_RED))		// 父节点，叔父节点均为红色，祖父节点为黑色
 				{
-
+					// 改变父节点，叔父节点的颜色为黑色，祖父节点为红色，并将祖父节点当做新插入的节点进行处理
+					node = gp;
+					color(parentPtr, RBTREE_BLACK);
+					color(unclePtr, RBTREE_BLACK);
+					color(gp, RBTREE_RED);
+					continue;
 				}
 			}
-			// 判断插入的节点是在父节点的右子树的左节点还是右节点 (即 右右 or 右左)
-			else
+			else if (gp && gp->_rChild == parentPtr)
 			{
-
+				unclePtr = gp->_lChild;
+				if (unclePtr == nullptr || clrType(unclePtr, RBTREE_BLACK))		// 父节点为红色，叔父节点为黑色，祖父节点为黑色
+				{
+					if (parentPtr->_lChild == node)
+					{
+						// 双旋
+						treeRightRotate(parentPtr);
+						treeLeftRotate(gp);
+						color(node, RBTREE_BLACK);
+						color(gp, RBTREE_RED);
+					}
+					else
+					{
+						// 单旋
+						treeLeftRotate(gp);
+						color(parentPtr, RBTREE_BLACK);
+						color(gp, RBTREE_RED);
+					}
+					break;
+				}
+				else if (clrType(unclePtr, RBTREE_RED))		// 父节点，叔父节点均为红色，祖父节点为黑色
+				{
+					// 改变父节点，叔父节点的颜色为黑色，祖父节点为红色，并将祖父节点当做新插入的节点进行处理
+					node = gp;
+					color(parentPtr, RBTREE_BLACK);
+					color(unclePtr, RBTREE_BLACK);
+					color(gp, RBTREE_RED);
+					continue;
+				}
+			}
+			else  // gp node is nullptr, parent node is root
+			{
+				// 不可能，根节点为黑色
 			}
 		}
+
+		color(_Root, RBTREE_BLACK);
 	}
 
 	bool RBTree::clrType(Node* node, colorType type)
 	{
 		return (node && node->_nodeType == type) ? true : false;
+	}
+
+	void RBTree::traversalTree(traversalModel type, __process func)
+	{
+		switch (type)
+		{
+		case PREORDER:
+			preorderTraversal(_Root);
+			break;
+		case INORDER:
+			inorderTraversal(_Root, func);
+			break;
+		case POSTORDER:
+			postorderTraversal(_Root);
+			break;
+		default:
+			break;
+		}
+	}
+
+	void RBTree::preorderTraversal(Node * node)
+	{
+		if (node != nullptr)
+		{
+			_SS << node->to_string() << "\r\n";
+			preorderTraversal(node->_lChild);
+			preorderTraversal(node->_rChild);
+		}
+	}
+
+	void RBTree::inorderTraversal(Node * node, __process func)
+	{
+		if (node != nullptr)
+		{
+			inorderTraversal(node->_lChild);
+			_SS << node->to_string() << "\r\n";
+			inorderTraversal(node->_rChild);
+		}
+	}
+
+	void RBTree::postorderTraversal(Node * node)
+	{
+		if (node != nullptr)
+		{
+			postorderTraversal(node->_lChild);
+			postorderTraversal(node->_rChild);
+			_SS << node->to_string() << "\r\n";
+		}
 	}
 
 	void RBTree::color(Node * node, colorType type_c)
@@ -218,11 +350,12 @@ namespace tg
 		Node * node_n = new Node(value);
 		return node_n;
 	}
+
 	Node * RBTree::parent(Node * node)
 	{
 		if (node->_parent != nullptr)
 		{
-			if (node->_parent->_parent = node)
+			if (node->_parent->_parent == node)
 				return nullptr;
 			else
 				return node->_parent;

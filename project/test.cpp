@@ -3,54 +3,58 @@
 
 #include "util/utility.h"
 #include <iostream>
+#include <map>
 
-//hash
+// hash
 #include "algorithm/hash/hash.h"
+// RB-tree
+#include "algorithm/RBTree/RBTree.h"
 
 using namespace tg;
 using namespace std;
 
 int main()
 {
-	hashtable<string, string> ht_s;
-	ht_s.Insert("hello", "world");
-	ht_s.Insert("bucket", "hello");
-	cout << ht_s.to_String().c_str() << " table size : " << ht_s.Size() << endl;
-
-	hashtable<int, int> ht_left_value;
-
+	RBTree* rbtree = new RBTree();
+	
 	srand(time(NULL));
-	int choose_key = 0, value = 0;
-	unsigned long start_build_tick = utility::getTickCount();
-	for (int index = 0; index < 10000; ++index)
+	unsigned long startTick = utility::getTickCount();
+	for (int index = 0; index < 100000; ++index)
 	{
-		choose_key++;
-		value = rand();
-		ht_left_value.Insert(choose_key, value);
+		rbtree->insertNode(index);
 	}
-	unsigned long duration_build = utility::getTickCount() - start_build_tick;
+	unsigned long duration = utility::getTickCount() - startTick;
+	
+	cout << "build rb-tree consume time(s) : " << duration / 1000 << endl;
 
-	cout << "build cusume time : " << duration_build << endl;
+	startTick = utility::getTickCount();
+	rbtree->findNode(rand() % 100);
+	duration = utility::getTickCount() - startTick;
 
-	unsigned long start_find_tick = utility::getTickCount();
-	int ret = ht_left_value.Find(choose_key);
-	unsigned long duration_find = utility::getTickCount() - start_find_tick;
+	cout << "find ele consume time : " << duration << endl;
 
-	cout << "find : origin pair -- ["
-		<< choose_key 
-		<< ","
-		<< value
-		<< "] result : [ key :"
-		<< choose_key
-		<< ", " 
-		<< ret 
-		<< "] size :"
-		<< ht_left_value.Size() << endl;
-		 
-	cout << " find cusume time : "
-		<< duration_find
-		<< endl;
+	cout << "size : " << rbtree->size();
 
+	// -- ¶Ô±ÈSTL hash_map
+	cout << "\n\n" << "----------------------" << endl;
+
+	map<int, int> stlMap;
+	startTick = utility::getTickCount();
+	for (int index = 0; index < 100000; ++index)
+	{
+		stlMap.insert(std::make_pair(index, index));
+	}
+	duration = utility::getTickCount() - startTick;
+
+	cout << "STL hash map build tree consume time : " << duration << endl;
+
+	startTick = utility::getTickCount();
+	stlMap.find(rand() % 100);
+	duration = utility::getTickCount() - startTick;
+
+	cout << "find ele consume time : " << duration << endl;
+
+	cout << "size : " << stlMap.size();
  	getchar();
 	return 0;
 }

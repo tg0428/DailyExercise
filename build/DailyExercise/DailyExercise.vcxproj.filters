@@ -49,6 +49,9 @@
     <Filter Include="project\algorithm\RBTree">
       <UniqueIdentifier>{a27e3570-954c-4700-9f5c-43d90b03bd09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="project\algorithm\priorityQueue">
+      <UniqueIdentifier>{964de766-dc14-449e-b25e-8863cfe07203}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\project\dynamic_array\dynamic_array.cpp">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="..\..\project\algorithm\RBTree\RBTree.cpp">
       <Filter>project\algorithm\RBTree</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\project\algorithm\priorityQueue\proprityQueue.cpp">
+      <Filter>project\algorithm\priorityQueue</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="..\..\project\algorithm\RBTree\RBTree.h">
       <Filter>project\algorithm\RBTree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\project\algorithm\priorityQueue\priorityQueue.h">
+      <Filter>project\algorithm\priorityQueue</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
