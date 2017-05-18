@@ -6,7 +6,7 @@ namespace tg
 {
 	using namespace std;
 
-	class bubbleSort : public SortBase<bubbleSort>
+	class bubbleSort : public SortBase
 	{
 	public:
 		bubbleSort();

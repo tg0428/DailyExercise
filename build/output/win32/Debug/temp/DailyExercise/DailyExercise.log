@@ -1,2 +1,37 @@
-﻿  DailyExercise.vcxproj -> E:\github\DailyExercise\build\output\win32\Debug\DailyExercise.exe
+﻿  test.cpp
+e:\github\dailyexercise\project\algorithm\sortbase.h(37): warning C4244: “return”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+e:\github\dailyexercise\project\algorithm\sortbase.h(43): warning C4244: “=”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+e:\github\dailyexercise\project\test.cpp(79): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+e:\github\dailyexercise\project\test.cpp(91): warning C4244: “初始化”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+e:\github\dailyexercise\project\test.cpp(100): warning C4244: “=”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+e:\github\dailyexercise\project\test.cpp(106): warning C4244: “=”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+e:\github\dailyexercise\project\test.cpp(115): warning C4244: “=”: 从“unsigned __int64”转换到“unsigned long”，可能丢失数据
+e:\github\dailyexercise\project\algorithm\heapsort\heapsort.h(38): warning C4018: “<”: 有符号/无符号不匹配
+  e:\github\dailyexercise\project\algorithm\heapsort\heapsort.h(33): note: 编译类 模板 成员函数“void tg::heapSort<Ty,Cmp>::adjust_heap(std::vector<main::elem *,std::allocator<_Ty>> &,int,int)”时
+          with
+          [
+              Ty=main::elem *,
+              Cmp=tg::Tgreater<main::elem *>,
+              _Ty=main::elem *
+          ]
+  e:\github\dailyexercise\project\algorithm\heapsort\heapsort.h(28): note: 参见对正在编译的函数 模板 实例化“void tg::heapSort<Ty,Cmp>::adjust_heap(std::vector<main::elem *,std::allocator<_Ty>> &,int,int)”的引用
+          with
+          [
+              Ty=main::elem *,
+              Cmp=tg::Tgreater<main::elem *>,
+              _Ty=main::elem *
+          ]
+  e:\github\dailyexercise\project\algorithm\priorityqueue\priorityqueue.h(11): note: 参见对正在编译的类 模板 实例化“tg::heapSort<Ty,Cmp>”的引用
+          with
+          [
+              Ty=main::elem *,
+              Cmp=tg::Tgreater<main::elem *>
+          ]
+  e:\github\dailyexercise\project\test.cpp(89): note: 参见对正在编译的类 模板 实例化“tg::priorityQueue<main::elem *,tg::Tgreater<Ty>>”的引用
+          with
+          [
+              Ty=main::elem *
+          ]
+e:\github\dailyexercise\project\algorithm\heapsort\heapsort.h(44): warning C4018: “<”: 有符号/无符号不匹配
+  DailyExercise.vcxproj -> E:\github\DailyExercise\build\output\win32\Debug\DailyExercise.exe
   DailyExercise.vcxproj -> E:\github\DailyExercise\build\output\win32\Debug\DailyExercise.pdb (Partial PDB)

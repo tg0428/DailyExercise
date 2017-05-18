@@ -8,8 +8,25 @@ namespace tg
 {
 	using namespace std;
 
-	template<class T>
-	class SortBase : public Singleton<T>
+	template<class Ty>
+	struct Tless
+	{
+		bool operator()(const Ty& lhs, const Ty& rhs)
+		{
+			return (lhs < rhs);
+		}
+	};
+
+	template<class Ty>
+	struct Tgreater
+	{
+		bool operator()(const Ty& lhs, const Ty& rhs)
+		{
+			return (lhs > rhs);
+		}
+	};
+
+	class SortBase
 	{
 	public:
 		virtual ~SortBase() {};
@@ -22,17 +39,7 @@ namespace tg
 			return 0;
 		};
 
-		void Sort(vector<int>& to_sort_arr)
-		{
-			bool ret = to_sort_arr.empty();
-			if (!ret)
-			{
-				sub_sort(to_sort_arr);
-			}
-		}
-		
 	protected:
-		virtual void sub_sort(vector<int>& to_sort_arr) = 0;
 		SortBase() { _start_sort_tick = utility::getTickCount(); };
 		unsigned long _start_sort_tick;
 	};

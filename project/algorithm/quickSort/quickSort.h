@@ -7,7 +7,7 @@
 namespace tg
 {
 	using namespace std;
-	class quickSort : public SortBase<quickSort>
+	class quickSort : public SortBase
 	{
 	public:
 		quickSort();

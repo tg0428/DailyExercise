@@ -2,7 +2,7 @@
 
 namespace tg
 {
-	template<class T>
+	template<class T >
 	class Singleton
 	{
 	public:
