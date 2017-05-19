@@ -1,5 +1,11 @@
 #include "RBTree.h"
 
+/**
+	note : 
+		关于树的遍历，两种实现方法： 1. 递归遍历  2. 搭配使用stack(栈)
+			* 递归遍历 -- 遍历方法是普通遍历，如果树的层级比较高的话，内存栈会很大
+*/
+
 namespace tg
 {
 	RBTree::RBTree()

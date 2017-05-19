@@ -11,27 +11,27 @@
 // hash
 #include "algorithm/hash/hash.h"
 // RB-tree
-#include "algorithm/RBTree/RBTree.h"
+#include "algorithm/search/RBTree/RBTree.h"
 // heap
-#include "algorithm/heapSort/heapSort.h"
+#include "algorithm/sort/heapSort/heapSort.h"
 // priority queue
-#include "algorithm/priorityQueue/priorityQueue.h"
+#include "algorithm/baseDataStructure/priorityQueue/priorityQueue.h"
 
 using namespace tg;
 using namespace std;
 
-int main()
+void rbTreeTest()
 {
-	/*RBTree* rbtree = new RBTree();
-	
+	RBTree* rbtree = new RBTree();
+
 	srand(time(NULL));
 	unsigned long startTick = utility::getTickCount();
 	for (int index = 0; index < 100000; ++index)
 	{
-		rbtree->insertNode(index);
+	rbtree->insertNode(index);
 	}
 	unsigned long duration = utility::getTickCount() - startTick;
-	
+
 	cout << "build rb-tree consume time(s) : " << duration / 1000 << endl;
 
 	startTick = utility::getTickCount();
@@ -49,7 +49,7 @@ int main()
 	startTick = utility::getTickCount();
 	for (int index = 0; index < 100000; ++index)
 	{
-		stlMap.insert(std::make_pair(index, index));
+	stlMap.insert(std::make_pair(index, index));
 	}
 	duration = utility::getTickCount() - startTick;
 
@@ -61,8 +61,11 @@ int main()
 
 	cout << "find ele consume time : " << duration << endl;
 
-	cout << "size : " << stlMap.size();*/
+	cout << "size : " << stlMap.size();
+}
 
+void priorityQueueTest()
+{
 	struct elem
 	{
 		size_t key;
@@ -72,7 +75,7 @@ int main()
 			return (key < cmp.key);
 		}
 
-		elem(size_t value) : key(value){}
+		elem(size_t value) : key(value) {}
 	};
 
 	// 生成随机序列
@@ -114,7 +117,12 @@ int main()
 
 	duration = utility::getTickCount() - startTick;
 	cout << pq.top()->key << " consume(ms) : " << duration << endl;
-	
+
+}
+
+int main()
+{
+	priorityQueueTest();
  	getchar();
 	return 0;
 }

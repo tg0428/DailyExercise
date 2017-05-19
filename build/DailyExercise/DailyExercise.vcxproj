@@ -19,12 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\project\algorithm\bubbleSort\bubbleSort.cpp" />
-    <ClCompile Include="..\..\project\algorithm\graphic\graphic.cpp" />
-    <ClCompile Include="..\..\project\algorithm\quickSort\quickSort.cpp" />
-    <ClCompile Include="..\..\project\algorithm\RBTree\RBTree.cpp" />
-    <ClCompile Include="..\..\project\algorithm\search\AVLTreeSearch.cpp" />
-    <ClCompile Include="..\..\project\algorithm\trieTree\trie_tree.cpp" />
+    <ClCompile Include="..\..\project\algorithm\baseDataStructure\graphic\graphic.cpp" />
+    <ClCompile Include="..\..\project\algorithm\baseDataStructure\trieTree\trie_tree.cpp" />
+    <ClCompile Include="..\..\project\algorithm\search\AVLTree\AVLTreeSearch.cpp" />
+    <ClCompile Include="..\..\project\algorithm\search\RBTree\RBTree.cpp" />
+    <ClCompile Include="..\..\project\algorithm\sort\bubbleSort\bubbleSort.cpp" />
+    <ClCompile Include="..\..\project\algorithm\sort\quickSort\quickSort.cpp" />
     <ClCompile Include="..\..\project\dynamic_array\dynamic_array.cpp" />
     <ClCompile Include="..\..\project\test.cpp" />
     <ClCompile Include="..\..\project\thread_pool\mutex.cpp" />
@@ -34,18 +34,17 @@
     <ClCompile Include="..\..\project\util\utility.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\project\algorithm\bubbleSort\bubbleSort.h" />
-    <ClInclude Include="..\..\project\algorithm\graphic\graphic.h" />
-    <ClInclude Include="..\..\project\algorithm\hash\hash.h" />
-    <ClInclude Include="..\..\project\algorithm\heapSort\heapSort.h" />
-    <ClInclude Include="..\..\project\algorithm\lru_cache\lru_cache.h" />
-    <ClInclude Include="..\..\project\algorithm\priorityQueue\priorityQueue.h" />
-    <ClInclude Include="..\..\project\algorithm\quickSort\quickSort.h" />
-    <ClInclude Include="..\..\project\algorithm\RBTree\RBTree.h" />
+    <ClInclude Include="..\..\project\algorithm\baseDataStructure\graphic\graphic.h" />
+    <ClInclude Include="..\..\project\algorithm\baseDataStructure\priorityQueue\priorityQueue.h" />
+    <ClInclude Include="..\..\project\algorithm\baseDataStructure\trieTree\trie_tree.h" />
+    <ClInclude Include="..\..\project\algorithm\cache\lruCache\lruCache.h" />
     <ClInclude Include="..\..\project\algorithm\SearchBase.h" />
-    <ClInclude Include="..\..\project\algorithm\search\AVLTreeSearch.h" />
-    <ClInclude Include="..\..\project\algorithm\SortBase.h" />
-    <ClInclude Include="..\..\project\algorithm\trieTree\trie_tree.h" />
+    <ClInclude Include="..\..\project\algorithm\search\AVLTree\AVLTreeSearch.h" />
+    <ClInclude Include="..\..\project\algorithm\search\hash\hash.h" />
+    <ClInclude Include="..\..\project\algorithm\search\RBTree\RBTree.h" />
+    <ClInclude Include="..\..\project\algorithm\sort\bubbleSort\bubbleSort.h" />
+    <ClInclude Include="..\..\project\algorithm\sort\heapSort\heapSort.h" />
+    <ClInclude Include="..\..\project\algorithm\sort\quickSort\quickSort.h" />
     <ClInclude Include="..\..\project\common\common.h" />
     <ClInclude Include="..\..\project\common\Singleton.h" />
     <ClInclude Include="..\..\project\dynamic_array\dynamic_array.h" />
